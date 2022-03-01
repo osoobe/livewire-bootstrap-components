@@ -1,0 +1,33 @@
+<div class="lv-nav-tabs">
+    <ul class="nav nav-tabs nav-pills-header">
+        @foreach ( $tabs as $key => $tab )
+            <li class="nav-item">
+                <a class="nav-link @if ($key == $current_tab) active @endif"
+                    href="#{{ $key }}"
+                    {{-- data-toggle="tab"  role="tab" --}}
+                    aria-controls="{{ $key }}" aria-selected="false"
+                    wire:click="switch('{{ $key }}')"
+                    {{-- wire:ignore --}}
+                   {{-- id="tab-{{$key}}" --}}
+                      >
+                    {{ __($tab['title']) }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
+
+    @php
+        $content = $tabs[$current_tab];
+    @endphp
+    <div class="nav-pills-content py-3"  id="{{ $current_tab }}"  aria-labelledby="{{ $current_tab }}-tab">
+        @if ( !empty($content['view']) )
+            @include($content['view'])
+        @elseif( !empty($content['livewire']) )
+            @if ( is_array($content['livewire']) )
+                @livewire(...$content['livewire'], key($current_tab))
+            @elseif( is_string($content['livewire']) )
+                @livewire($content['livewire'], key($current_tab))
+            @endif
+        @endif
+    </div>
+</div>

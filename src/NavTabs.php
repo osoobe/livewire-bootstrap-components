@@ -11,6 +11,7 @@ class NavTabs extends Component
     public $tabs;
     public $current_tab;
     public $current_data = [];
+    public $navStyle = "pills";
 
 
     public function switch($key) {
@@ -31,6 +32,20 @@ class NavTabs extends Component
             $this->current_data = $this->tabs[$this->current_tab];
         }
 
-        return view('lwbootstrap::livewire.nav-tabs');
+        switch ($this->navStyle) {
+            case 'pills':
+                $view = 'lwbootstrap::livewire.nav-pills';
+                break;
+
+            case 'tabs':
+                $view = 'lwbootstrap::livewire.nav-pills';
+                break;
+
+            default:
+                $view = 'lwbootstrap::livewire.nav-pills';
+                break;
+        }
+
+        return view($view);
     }
 }
