@@ -26,5 +26,6 @@ class LivewireBootstrapComponentsServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'lwbootstrap');
         Livewire::component('nav-tabs', NavTabs::class);
+        Livewire::component('card-tiles', CardTiles::class);
     }
 }
