@@ -21,7 +21,11 @@
     @endphp
     <div class="nav-pills-content py-3"  id="{{ $current_tab }}"  aria-labelledby="{{ $current_tab }}-tab">
         @if ( !empty($content['view']) )
-            @include($content['view'])
+            @if ( is_array($content['view']) )
+                @include($content['view'][0], $content['view'][1])
+            @elseif( is_string($content['view']) )
+                @include($content['view'])
+            @endif
         @elseif( !empty($content['livewire']) )
             @if ( is_array($content['livewire']) )
                 @livewire(...$content['livewire'], key($current_tab))
