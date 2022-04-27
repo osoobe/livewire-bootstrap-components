@@ -31,21 +31,19 @@ class NavTabs extends Component
         if ( !empty($this->current_tab) ) {
             $this->current_data = $this->tabs[$this->current_tab];
         }
-
         switch ($this->navStyle) {
             case 'pills':
                 $view = 'lwbootstrap::livewire.nav-pills';
                 break;
 
             case 'tabs':
-                $view = 'lwbootstrap::livewire.nav-pills';
+                $view = 'lwbootstrap::livewire.nav-tabs';
                 break;
 
             default:
                 $view = 'lwbootstrap::livewire.nav-pills';
                 break;
         }
-
         return view($view);
     }
 }
