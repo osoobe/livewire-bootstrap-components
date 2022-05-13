@@ -13,6 +13,8 @@ class NavTabs extends Component
     public $current_data = [];
     public $navStyle = "pills";
 
+    protected $listeners = ['navTabRefresh' => '$refresh'];
+
 
     public function switch($key) {
         $this->current_tab = $key;
