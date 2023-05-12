@@ -3,7 +3,7 @@
         @foreach ( $tabs as $key => $tab )
             <li class="nav-item">
                 <a class="nav-link @if ($loop->first) active @endif"
-                    href="#{{ $key }}"
+                    href="?lvtab={{ $key }}#{{ $key }}"
                     data-toggle="tab"  role="tab"
                     aria-controls="{{ $key }}" aria-selected="false"
                     wire:ignore

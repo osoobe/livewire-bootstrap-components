@@ -27,8 +27,13 @@ class NavTabs extends Component
         }
 
         if ( empty($this->current_tab) ) {
+            $this->current_tab = request()->input('lvtab', null);
+        }
+
+        if ( empty($this->current_tab) ) {
             $this->current_tab = array_keys($this->tabs)[0];
         }
+
 
         if ( !empty($this->current_tab) ) {
             $this->current_data = $this->tabs[$this->current_tab];

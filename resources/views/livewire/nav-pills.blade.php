@@ -3,12 +3,12 @@
         @foreach ( $tabs as $key => $tab )
             <li class="nav-item">
                 <a class="nav-link @if ($key == $current_tab) active @endif"
-                    href="#{{ $key }}"
+                    href="?lvtab={{ $key }}#{{ $key }}"
                     {{-- data-toggle="tab"  role="tab" --}}
                     aria-controls="{{ $key }}" aria-selected="false"
                     wire:click="switch('{{ $key }}')"
                     {{-- wire:ignore --}}
-                   {{-- id="tab-{{$key}}" --}}
+                    {{-- id="tab-{{$key}}" --}}
                       >
                     {{ __($tab['title']) }}
                 </a>
