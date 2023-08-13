@@ -33,7 +33,7 @@
                 }
             @endphp
             <div class="col-md-4 my-2">
-                <a class="card shadow-sm text-black text-decoration-none" href="{{ $url }}">
+                <a class="card lv-card-tile shadow-sm text-black text-decoration-none card-tile-{{ Str::slug($tile['title']) }}" href="{{ $url }}">
                     <div class="card-body">
                         <h5 class="card-title">
                             <i class="{{ $tile['icon'] }}"></i>
