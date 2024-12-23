@@ -5,18 +5,25 @@
                 @continue
             @endif
             <li class="nav-item">
-                <a class="nav-link @if ($loop->first) active @endif"
-                    href="?lvtab={{ $key }}#{{ $key }}" data-toggle="tab" role="tab"
-                    aria-controls="{{ $key }}" aria-selected="false" wire:ignore id="tab-{{ $key }}">
-                    {{ __($tab['title']) }}
-                </a>
+                @if ( ( empty($tab['route']) )  )
+                    <a class="nav-link @if ($loop->first) active @endif"
+                        href="?lvtab={{ $key }}#{{ $key }}" data-toggle="tab" role="tab"
+                        aria-controls="{{ $key }}" aria-selected="false" wire:ignore id="tab-{{ $key }}">
+                        {{ __($tab['title']) }}
+                    </a>
+                @else
+                    <a class="nav-link @if ($loop->first) active @endif"
+                        href="{{ $tab['route'] }}" >
+                        {{ __($tab['title']) }}
+                    </a>
+                @endif
             </li>
         @endforeach
     </ul>
 
     <div class="tab-content py-3">
         @foreach ($tabs as $key => $content)
-            @if (!empty($content['hide']) && $content['hide'])
+            @if ( (!empty($content['hide']) && $content['hide']) || ( !empty($content['route']) ) )
                 @continue
             @endif
             <div class="tab-pane fade @if ($loop->first) show active @endif "

@@ -5,6 +5,7 @@
                 @continue
             @endif
             <li class="nav-item">
+                @if ( ( empty($tab['route']) )  )
                 <a class="nav-link @if ($key == $current_tab) active @endif"
                     href="?lvtab={{ $key }}#{{ $key }}"
                     {{-- data-toggle="tab"  role="tab" --}}
@@ -15,6 +16,12 @@
                       >
                     {{ __($tab['title']) }}
                 </a>
+                @else
+                    <a class="nav-link"
+                        href="{{ $tab['route'] }}" >
+                        {{ __($tab['title']) }}
+                    </a>
+                @endif
             </li>
         @endforeach
     </ul>
