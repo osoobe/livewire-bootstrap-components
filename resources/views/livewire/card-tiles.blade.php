@@ -7,7 +7,7 @@
             <h4 class="mb-0 mt-1" >{{ $tiles->count() }} tiles</h4>
         </div>
         <div class="col-md-4 py-1">
-            <input type="search" wire:model="search" class="form-control" >
+            <input type="search" wire:model.live.debounce.300ms="search" class="form-control" >
             @error('search') <span class="error">{{ $message }}</span> @enderror
         </div>
     </form>
